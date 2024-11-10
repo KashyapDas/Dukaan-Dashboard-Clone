@@ -3,6 +3,8 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import Navbar from "./components/Navbar";
 import { useRecoilState } from "recoil";
 import { NavAtoms } from "./atoms/NavAtoms";
+import Overview from "./components/Overview";
+import Transaction from "./components/Transaction";
 
 function App() {
 
@@ -10,7 +12,7 @@ function App() {
 
 
   return (
-    <div className="w-screen h-screen sm:bg-green-500 overflow-hidden relative">
+    <div className="w-screen h-screen sm:bg-green-500 overflow-x-hidden relative">
       
       <div className="flex mt-1 h-fit items-center">
         {/* Hamburg Menu */}
@@ -23,6 +25,7 @@ function App() {
         </div>
       </div>
 
+      {/* Navbar Components */}
       <div 
         className={`transition-all duration-300 ease-in-out absolute -translate-y-[0.6%] ${
           navAtoms 
@@ -32,6 +35,11 @@ function App() {
       >
         <Navbar />
       </div>
+      {/* Overview Section */}
+      <Overview/>
+      {/* Transaction Section */}
+      <Transaction/>
+      {/* Orders Sections */}
 
     </div>
   );
