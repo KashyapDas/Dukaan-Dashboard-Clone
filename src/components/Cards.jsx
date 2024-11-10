@@ -3,7 +3,8 @@ import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { IoIosArrowForward } from "react-icons/io";
 import style from "./regular.module.css"
 
-function Cards({title,desc,orders}) {
+const Cards = React.memo(({title,desc,orders})=> {
+  console.log("Cards Component render...");
   return (
     <div className='hover:bg-black hover:text-white bg-slate-100 text-black shadow-md  rounded-md'>
       <h1 className='flex items-center p-2 min-h-20 text-2xl font-semibold'>{title}<AiOutlineQuestionCircle className='ml-2'/></h1>
@@ -14,6 +15,6 @@ function Cards({title,desc,orders}) {
 
     </div>
   )
-}
+})
 
 export default Cards

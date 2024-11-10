@@ -1,13 +1,19 @@
 import React from "react";
 import { GrSearch } from "react-icons/gr";
+import { useRecoilValue } from "recoil";
+import { atomData } from "../atoms/DataAtom";
 
-function Orders() {
+const Orders=React.memo(()=>{
+
+    const rawData = useRecoilValue(atomData);
+    console.log("Orders components render...");
+
   return (
-    <div className=" h-screen w-screen flex flex-col gap-y-4 mt-5">
+    <div className=" h-fit w-screen flex flex-col gap-y-4 mt-5">
       <div className="flex items-center w-[60vw] bg-white rounded-md ml-2 border-2 border-solid border-black">
         <GrSearch className=" bg-white text-xl rounded-md ml-2" />
         <input
-          className="w-full p-2 rounded-md"
+          className="w-full p-2 rounded-md border-none outline-none"
           type="text"
           name="orderSearch"
           id="orderSearch"
@@ -28,21 +34,18 @@ function Orders() {
           </div>
 
         {/* Map the json */}
-          <div className="grid grid-cols-5 gap-4">
-            <h1 className="text-md truncate ">Orders</h1>
-            <h1 className="text-md truncate ">Status</h1>
-            <h1 className="text-md truncate ">Transaction Id</h1>
-            <h1 className="text-md truncate ">Refund Date</h1>
-            <h1 className="text-md truncate ">Order Amount</h1>
-          </div>
-          <div className="grid grid-cols-5 gap-4">
-            <h1 className="text-md truncate ">Orders</h1>
-            <h1 className="text-md truncate ">Status</h1>
-            <h1 className="text-md truncate ">Transaction Id</h1>
-            <h1 className="text-md truncate ">Refund Date</h1>
-            <h1 className="text-md truncate ">Order Amount</h1>
-          </div>
-          
+            
+            {rawData.map((items,index)=>(
+                    <div key={index} className="grid grid-cols-5 gap-4">
+                        <h1 className="text-sm truncate ">{items.orders}</h1>
+                        <h1 className="text-sm truncate ">{items.status}</h1>
+                        <h1 className="text-sm truncate ">{items.transactionId}</h1>
+                        <h1 className="text-sm truncate ">{items.refundDate}</h1>
+                        <h1 className="text-sm truncate ">{items.otherAmount}</h1>
+                  </div>
+            ))}
+        
+        
 
         </div>
 
@@ -54,16 +57,8 @@ function Orders() {
 
     </div>
   );
-}
+})
 
 export default Orders;
 
-{
-  /* <div className='flex gap-x-9 '>
-                <h1 className='text-md  bg-yellow-400'>Orders</h1>
-                <h1 className='text-md'>Status</h1>
-                <h1 className='text-md'>Trasaction Id</h1>
-                <h1 className='text-md'>Refund Date</h1>
-                <h1 className='text-md'>Order Amount</h1>
-            </div> */
-}
+

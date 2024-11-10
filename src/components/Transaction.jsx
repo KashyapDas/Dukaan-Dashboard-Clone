@@ -1,9 +1,13 @@
 import React from 'react'
 import Orders from './Orders'
+import { RecoilRoot } from 'recoil'
 
-function Transaction() {
+const Transaction=React.memo(()=> {
+  console.log("Transaction Component Render...");
+
+
   return (
-    <div className='w-screen bg-red- flex flex-col gap-y-2'>
+    <div className='w-screen flex flex-col gap-y-2'>
        
        <h1 className='text-2xl mt-2 font-ligth p-2'>Transactions | This Month </h1>
        <div className='flex gap-x-5 ml-2'>
@@ -11,10 +15,12 @@ function Transaction() {
         <button className='bg-slate-200 hover:bg-blue-950 hover:text-white p-1 px-6 text-center text-lg font-semibold rounded-full'>Refunds (6)</button>
        </div>
       {/* Orders Sections */}
-      <Orders/>
+      <RecoilRoot>
+        <Orders/>
+      </RecoilRoot>
 
     </div>
   )
-}
+})
 
 export default Transaction

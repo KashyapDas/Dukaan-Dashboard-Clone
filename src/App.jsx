@@ -5,6 +5,7 @@ import { useRecoilState } from "recoil";
 import { NavAtoms } from "./atoms/NavAtoms";
 import Overview from "./components/Overview";
 import Transaction from "./components/Transaction";
+import Footer from "./components/footer";
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
       <Overview/>
       {/* Transaction Section */}
       <Transaction/>
+      <Footer/>
     </div>
   );
 }
