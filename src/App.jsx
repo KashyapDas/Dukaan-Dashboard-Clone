@@ -39,8 +39,6 @@ function App() {
       <Overview/>
       {/* Transaction Section */}
       <Transaction/>
-      {/* Orders Sections */}
-
     </div>
   );
 }
